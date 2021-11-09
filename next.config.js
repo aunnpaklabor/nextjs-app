@@ -1,3 +1,26 @@
-module.exports = {
-  reactStrictMode: true,
-}
+// module.exports = {
+//   reactStrictMode: true,
+// }
+const { PHASE_DEVELOPMENT_SERVER } = require("next/constants");
+
+module.exports = (phase) => {
+  if (phase === PHASE_DEVELOPMENT_SERVER) {
+    return {
+      env: {
+        mongodb_username: "pakin_aun",
+        mongodb_password: "pakindb",
+        mongodb_clustername: "cluster0",
+        mongodb_database: "my-site-dev",
+      },
+    };
+  }
+
+  return {
+    env: {
+      mongodb_username: "pakin_aun",
+      mongodb_password: "pakindb",
+      mongodb_clustername: "cluster0",
+      mongodb_database: "my-site",
+    },
+  };
+};
